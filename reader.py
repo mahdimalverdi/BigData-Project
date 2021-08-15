@@ -15,6 +15,6 @@
 # producer.send('quickstart-events', key=b'message-two', value=b'This is Kafka-Python')
 
 from kafka import KafkaConsumer
-consumer = KafkaConsumer('sample',bootstrap_servers=['185.235.40.116:9092'])
+consumer = KafkaConsumer('sample',bootstrap_servers=['localhost:9092'])
 for message in consumer:
     print (message)
