@@ -13,10 +13,13 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome("/usr/bin/chromedriver",chrome_options=chrome_options)
+print('1')
 driver.get("https://www.sahamyab.com/stocktwits")
+print('2')
 last_tweet = ''
 while driver.execute_script("return (true)"):
     tweet = driver.find_element(By.XPATH, "//div[2]/p").text
+    print('3')
     if(last_tweet != tweet):
         x = dumps(tweet).encode('utf-8')
         result =  producer.send(topic='quickstart-events', value=b'x')
