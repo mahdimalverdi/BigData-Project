@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 from json import dumps
@@ -8,11 +7,7 @@ from json import loads
 
 producer = KafkaProducer(bootstrap_servers='185.235.40.116:9092')
 
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome('/path/to/your_chrome_driver_dir/chromedriver',chrome_options=chrome_options)
+driver = webdriver.Chrome()
 driver.get("https://www.sahamyab.com/stocktwits")
 last_tweet = ''
 while driver.execute_script("return (true)"):
