@@ -8,7 +8,7 @@ from json import loads
 
 producer = KafkaProducer(bootstrap_servers='185.235.40.116:9092')
 
-chrome_options = webdriver.ChromeOptions("webdriver.chrome.driver", "/usr/bin/chromedriver")
+chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
