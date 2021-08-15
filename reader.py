@@ -16,6 +16,5 @@
 
 from kafka import KafkaConsumer
 consumer = KafkaConsumer('sample',bootstrap_servers=['185.235.40.116:9092'])
-consumer.next()
 for message in consumer:
     print (message)
