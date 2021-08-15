@@ -17,7 +17,6 @@ driver.get("https://www.sahamyab.com/stocktwits")
 last_tweet = ''
 while driver.execute_script("return (true)"):
     tweet = driver.find_element(By.XPATH, "//div[2]/p").text
-    print('3')
     if(last_tweet != tweet):
         print("tweet: " + tweet )
         username = driver.find_element(By.XPATH, "//app-user-status-bar/a").text
