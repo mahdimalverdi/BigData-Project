@@ -42,9 +42,16 @@ def get_last_100_tweets():
         return items[:-100]
     return  items
 
+def get_tweets(ids):
+    ids = list(map(lambda id:"msg:"+ id, ids))
+
+    for id in ids:
+        print(r.get(id))
+
 while True:
+    get_tweets(get_last_6h_tweet_ids("@FarsNewsInt"))
     print(get_last_100_tweets())
     print(get_last_1000_hashtag())
-    print(get_last_today_ids())
+    get_tweets(get_last_today_ids())
 
     time.sleep(1)

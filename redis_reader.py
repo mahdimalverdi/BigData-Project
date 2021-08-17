@@ -26,7 +26,10 @@ def get_last_6h_tweet_ids(user):
     if tweets == 'None':
         return []
 
-    return  tweets.split('&')
+    items =  tweets.split('&')
+    if len(items) > 6:
+        return items[:-6]
+    return  items
 
 def get_last_today_ids():
     tweets = str(r.get("msg:today"))
