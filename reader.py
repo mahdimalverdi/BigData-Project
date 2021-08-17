@@ -36,5 +36,5 @@ for message in consumer:
 
     value['cleaned_tweet'] = cleaned_sentence
     value['tokens'] = list(set(stems))
-    producer.send('cleaneddata', value)
+    # producer.send('cleaneddata', value)
     print (value)

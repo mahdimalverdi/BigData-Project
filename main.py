@@ -31,26 +31,27 @@ element = wait.until(EC.element_to_be_clickable((By.XPATH, '//article/div/div/di
 tweets = set()
 
 while True:
-
-    for i in range(1, 100000):
-        try:
-            tweet = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[2]/div[1])["+str(i)+"]").text
-            if tweet not in tweets:
-                display_name = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/a/div/div[1])["+str(i)+"]").text
-                user_name = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/a/div/div[2])["+str(i)+"]").text
-                datetime = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/a/time)["+str(i)+"]").get_attribute("datetime")
-                print("username: " + user_name)
-                print("display name: " + display_name)
-                print("time: " + datetime)
-                producer.send('sample', {
-                    'tweet': tweet,
-                    'user': user_name,
-                    'display_name': display_name,
-                    'time': datetime
-                })
-                print("---------------------------------")
-                tweets.add(tweet)
-        except:
-            break;
-    driver.execute_script("window.scrollBy(0,100000)")
-    time.sleep(1)
+    for j in range(1, 100000):
+        for i in range(1, 100000):
+            try:
+                tweet = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[2]/div[1])["+str(i)+"]").text
+                if tweet not in tweets:
+                    display_name = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/a/div/div[1])["+str(i)+"]").text
+                    user_name = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/a/div/div[2])["+str(i)+"]").text
+                    datetime = driver.find_element(By.XPATH, "(//article/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/a/time)["+str(i)+"]").get_attribute("datetime")
+                    print("username: " + user_name)
+                    print("display name: " + display_name)
+                    print("time: " + datetime)
+                    producer.send('sample', {
+                        'tweet': tweet,
+                        'user': user_name,
+                        'display_name': display_name,
+                        'time': datetime
+                    })
+                    print("---------------------------------")
+                    tweets.add(tweet)
+            except:
+                break;
+        driver.execute_script("window.scrollBy(0,100000)")
+        time.sleep(1)
+    driver.execute_script("window.scrollTo(0,0)")
