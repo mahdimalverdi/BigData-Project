@@ -49,8 +49,8 @@ def get_tweets(ids):
         print(r.get(id))
 
 while True:
-    get_tweets(get_last_6h_tweet_ids("@FarsNewsInt"))
-    print(get_last_100_tweets())
+    print( len(get_last_6h_tweet_ids("@FarsNewsInt")))
+    print(len(get_last_100_tweets()))
     print(get_last_1000_hashtag())
     get_tweets(get_last_today_ids())
 
